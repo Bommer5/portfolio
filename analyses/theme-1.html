@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thème 1 — Jeu d'échecs | Nathan Brico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="analyse.css">
+</head>
+<body>
+
+  <nav class="analyse-nav">
+    <div class="nav-inner container">
+      <a href="../index.html#activites" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour au portfolio
+      </a>
+      <div class="theme-nav-btns">
+        <a href="#" class="disabled">← Précédent</a>
+        <a href="theme-2.html">Suivant →</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="analyse-hero">
+    <div class="container">
+      <span class="theme-badge">Thème 01 / 08</span>
+      <h1>Jeu d'Échecs en JavaScript</h1>
+      <div class="analyse-meta">
+        <span class="meta-pill">Projet personnel</span>
+        <span class="meta-pill hours">9h20</span>
+        <span class="meta-pill">JavaScript · HTML5 · CSS3</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="analyse-body">
+
+      <article class="analyse-article">
+
+        <div class="analyse-section">
+          <h2>Contexte</h2>
+          <p>Durant cette année académique, j'ai décidé de relever un défi personnel en dehors de mon cursus scolaire : développer un jeu d'échecs complet en JavaScript. Ce choix s'est imposé naturellement, car les échecs constituent l'un de mes passe-temps favoris et je souhaitais me confronter à un problème algorithmique ambitieux qui me permette de consolider mes compétences en développement web front-end. Je n'avais aucun tutoriel spécifique sur lequel m'appuyer — j'ai travaillé entièrement par moi-même, à partir de la logique du jeu et de mes connaissances en JavaScript.</p>
+          <p>Ce projet représente environ 9h20 de travail effectif réparti sur plusieurs sessions, principalement en soirée et le week-end.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Faits et apprentissages</h2>
+          <p>J'ai conçu l'architecture du jeu de zéro. Le plateau est construit en HTML pur, avec 64 cases identifiées individuellement par un attribut numérique. La totalité de la logique de jeu est gérée en JavaScript :</p>
+          <ul>
+            <li>Validation des déplacements légaux pour chaque type de pièce : pion, cavalier, fou, tour, dame et roi.</li>
+            <li>Détection de l'échec et de l'échec et mat — qui implique de simuler chaque coup possible avant de l'appliquer pour vérifier qu'il ne laisse pas le roi en danger.</li>
+            <li>Gestion de la prise en passant (<em>en-passant</em>), règle peu connue qui exige de mémoriser le dernier coup joué.</li>
+            <li>Promotion du pion avec sélection interactive de la pièce de remplacement via une fenêtre contextuelle.</li>
+            <li>Gestion des tours et de l'état du plateau pour distinguer les pièces blanches des noires.</li>
+          </ul>
+          <p>La partie la plus complexe a été l'implémentation de la détection d'échec : pour chaque coup candidat, il faut simuler le plateau résultant, vérifier si le roi de la couleur en train de jouer est attaqué, et annuler le coup si c'est le cas. Cette logique de simulation implique une compréhension solide de la gestion d'état en JavaScript.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Mise en perspective</h2>
+          <p>Ce projet a mis en lumière deux de mes traits de caractère dominants de manière très concrète. D'un côté, mon perfectionnisme m'a poussé à implémenter des règles avancées comme l'en-passant et la promotion, bien au-delà de ce qu'un prototype simple aurait exigé. Ce perfectionnisme est l'une des faiblesses que j'ai identifiées dans mon profil : il peut m'amener à passer trop de temps sur des détails au détriment de l'avancement global du projet. Cette expérience m'a aidé à en prendre conscience plus clairement.</p>
+          <p>D'un autre côté, j'ai montré une persévérance que je considère comme l'une de mes principales forces. Certaines fonctionnalités — notamment la détection d'échec — ont demandé plusieurs heures de débogage intensif. J'ai eu des moments où le plateau se comportait de manière totalement incohérente, et où j'aurais pu simplifier ou abandonner la fonctionnalité. Je ne l'ai pas fait. J'ai analysé, isolé le problème, compris l'erreur de logique, et trouvé la solution. Cette ténacité est exactement l'état d'esprit que je veux apporter dans un environnement professionnel.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Lien avec mon projet professionnel</h2>
+          <p>La maîtrise du JavaScript est fondamentale pour un développeur full-stack. Ce projet m'a permis de renforcer ma compréhension du DOM, de la gestion d'événements, de la manipulation d'états complexes et de l'algorithmique appliquée — des compétences directement utilisables dans un contexte professionnel comme AXA.</p>
+          <p>Au-delà des compétences techniques, ce projet démontre ma capacité à mener un projet de bout en bout de manière totalement autonome : définition du périmètre, conception, développement, débogage et livraison. Cette autonomie est une qualité indispensable dans une équipe de développement en entreprise, où l'on ne peut pas toujours attendre qu'un encadrant vienne résoudre chaque problème.</p>
+          <p>Enfin, la démo jouable intégrée directement dans ce portfolio constitue une preuve concrète et vérifiable de mes compétences — ce qui est bien plus parlant qu'une simple ligne sur un CV.</p>
+        </div>
+
+      </article>
+
+      <aside class="analyse-sidebar">
+        <div class="info-card">
+          <h4>Informations</h4>
+          <div class="info-row"><span>Thème</span><span>01 / 08</span></div>
+          <div class="info-row"><span>Heures</span><span>9h20</span></div>
+          <div class="info-row"><span>Type</span><span>Projet personnel</span></div>
+          <div class="info-row"><span>Période</span><span>2024–2025</span></div>
+          <div class="skill-tag-row">
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">Algorithmique</span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-card-header">
+            <h4>Preuve</h4>
+            <span class="proof-verified">✓ Vérifiable</span>
+          </div>
+          <div class="proof-card-body">
+            <p>Le code source complet est intégré dans ce portfolio. La démo jouable est accessible directement depuis la page d'accueil (section "Démonstration").</p>
+            <a href="../index.html#echecs" class="btn btn-primary" style="margin-top:12px; display:inline-flex; width:100%; justify-content:center;">Jouer à la démo</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h4>Forces / Faiblesses abordées</h4>
+          <div class="info-row"><span>Force</span><span>Persévérance</span></div>
+          <div class="info-row"><span>Force</span><span>Autonomie</span></div>
+          <div class="info-row"><span>Faiblesse</span><span>Perfectionnisme</span></div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <section class="analyse-theme-nav">
+    <div class="container">
+      <div class="theme-nav-grid">
+        <div class="theme-nav-card empty"></div>
+        <a href="theme-2.html" class="theme-nav-card next">
+          <span class="direction">Thème suivant →</span>
+          <span class="title">Tennis de table</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

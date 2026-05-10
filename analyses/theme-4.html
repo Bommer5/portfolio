@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thème 4 — La Roue du Chaos | Nathan Brico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="analyse.css">
+</head>
+<body>
+
+  <nav class="analyse-nav">
+    <div class="nav-inner container">
+      <a href="../index.html#activites" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour au portfolio
+      </a>
+      <div class="theme-nav-btns">
+        <a href="theme-3.html">← Précédent</a>
+        <a href="theme-5.html">Suivant →</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="analyse-hero">
+    <div class="container">
+      <span class="theme-badge">Thème 04 / 08</span>
+      <h1>La Roue du Chaos — Application Node.js & IA Google Gemini</h1>
+      <div class="analyse-meta">
+        <span class="meta-pill">Projet personnel</span>
+        <span class="meta-pill hours">7h</span>
+        <span class="meta-pill">Node.js · Gemini · JavaScript</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="analyse-body">
+
+      <article class="analyse-article">
+
+        <div class="analyse-section">
+          <h2>Contexte</h2>
+          <p>La Roue du Chaos est un projet personnel que j'ai initié par curiosité et passion pour l'intelligence artificielle générative. L'idée de départ était de créer un jeu de type "Vérité ou Défi" multijoueur, où les défis et questions sont générés dynamiquement par une IA plutôt qu'issus d'une liste prédéfinie — rendant chaque partie unique et imprévisible.</p>
+          <p>Pour donner vie à ce projet, j'ai intégré l'API Google Gemini de Google, qui génère le contenu du jeu en temps réel selon le contexte de la partie. Le back-end tourne sur Node.js (server.js) et le front-end est développé en HTML/JavaScript. Le projet est disponible publiquement sur GitHub. Ce projet représente environ 7h de travail effectif.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Faits et apprentissages</h2>
+          <p>Ce projet m'a permis d'explorer plusieurs technologies que je n'avais pas encore pratiquées dans un contexte réel :</p>
+          <ul>
+            <li><strong>Intégration de l'API Google Gemini :</strong> J'ai appris à structurer des requêtes vers l'API, à gérer les réponses JSON, à paramétrer les prompts pour obtenir des défis cohérents et variés, et à gérer les erreurs d'API (quotas, délais, réponses inattendues).</li>
+            <li><strong>Architecture back-end Node.js :</strong> Mise en place d'un serveur Node.js (server.js) gérant la logique de jeu multijoueur, la communication avec l'API Gemini, et la gestion d'un pool de joueurs via pool.json.</li>
+            <li><strong>Front-end HTML/JavaScript :</strong> Développement de l'interface de jeu permettant à plusieurs joueurs d'interagir en temps réel avec les contenus générés par l'IA.</li>
+            <li><strong>Tests et diagnostic de l'IA :</strong> Mise en place de fichiers de test (test_ai.js, verify_ai.js, diag_models.js) pour valider le comportement de l'API et diagnostiquer les problèmes de modèle.</li>
+          </ul>
+          <p>La principale difficulté a été le "prompt engineering" : formuler les instructions données à l'IA de manière à obtenir des défis adaptés au contexte du jeu, ni trop faciles ni trop risqués, tout en restant imprévisibles. J'ai découvert qu'une IA nécessite une interaction très soignée pour produire des résultats de qualité constante.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Mise en perspective</h2>
+          <p>Ce projet reflète ma curiosité naturelle pour les technologies émergentes et mon goût pour les projets concrets et ludiques. Il démontre ma polyvalence technique — je suis à l'aise pour explorer des technologies que je ne maîtrise pas encore, assembler un back-end Node.js avec une API IA, et livrer une application multijoueur fonctionnelle de bout en bout.</p>
+          <p>Mon perfectionnisme a été ici un moteur positif : je ne me suis pas contenté d'une simple intégration API. J'ai structuré des fichiers de test dédiés (test_ai.js, verify_ai.js) pour valider le comportement de l'IA — une rigueur peu commune pour un projet personnel. C'est cet équilibre — entre vouloir bien faire et savoir livrer — que je continue à travailler.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Lien avec mon projet professionnel</h2>
+          <p>L'intelligence artificielle n'est plus une technologie expérimentale réservée aux startups : elle est en train de transformer en profondeur le fonctionnement des grandes entreprises. Dans une société comme AXA, l'IA est déjà utilisée pour l'analyse des risques, la détection de fraudes, l'optimisation des processus de sinistres et l'amélioration de l'expérience client.</p>
+          <p>Avoir développé une application intégrant une API d'IA en production — même dans un contexte ludique — me donne une compréhension concrète des enjeux : latences, coûts d'API, gestion des réponses imprévisibles, sécurisation des clés d'API. Ces réalités techniques, je les ai rencontrées et gérées par moi-même. C'est une expérience directement transférable à un contexte professionnel.</p>
+        </div>
+
+      </article>
+
+      <aside class="analyse-sidebar">
+        <div class="info-card">
+          <h4>Informations</h4>
+          <div class="info-row"><span>Thème</span><span>04 / 08</span></div>
+          <div class="info-row"><span>Heures</span><span>7h</span></div>
+          <div class="info-row"><span>Type</span><span>Projet personnel</span></div>
+          <div class="info-row"><span>Stack</span><span>Node.js + Gemini</span></div>
+          <div class="info-row"><span>GitHub</span><span>Bommer5</span></div>
+          <div class="skill-tag-row">
+            <span class="tag">Node.js</span>
+            <span class="tag">API Gemini</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML5</span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-card-header">
+            <h4>Preuve — Dépôt GitHub public</h4>
+            <span class="proof-verified">✓ Vérifiable</span>
+          </div>
+          <div class="proof-card-body">
+            <p>Le code source complet est disponible publiquement sur GitHub. Il inclut le serveur Node.js, l'intégration API Gemini, le front-end HTML/JS et les fichiers de test.</p>
+            <a href="https://github.com/Bommer5/la-roue-du-chaos" target="_blank" rel="noopener" class="proof-pdf-link" style="margin-top:12px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              github.com/Bommer5/la-roue-du-chaos
+            </a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h4>Forces / Faiblesses abordées</h4>
+          <div class="info-row"><span>Force</span><span>Polyvalence technique</span></div>
+          <div class="info-row"><span>Force</span><span>Autonomie</span></div>
+          <div class="info-row"><span>Force</span><span>Curiosité</span></div>
+          <div class="info-row"><span>Faiblesse</span><span>Perfectionnisme</span></div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <section class="analyse-theme-nav">
+    <div class="container">
+      <div class="theme-nav-grid">
+        <a href="theme-3.html" class="theme-nav-card">
+          <span class="direction">← Thème précédent</span>
+          <span class="title">Apprentissage React</span>
+        </a>
+        <a href="theme-5.html" class="theme-nav-card next">
+          <span class="direction">Thème suivant →</span>
+          <span class="title">Formations Technofutur TIC</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

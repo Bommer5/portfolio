@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thème 8 — Analyse Sécurité API | Nathan Brico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="analyse.css">
+  <style>
+    .code-block {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .code-block-header {
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .code-block-header span {
+      font-size: .8rem;
+      font-weight: 600;
+      color: #8b949e;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .code-block-header .lang-badge {
+      background: #1f6feb;
+      color: #fff;
+      font-size: .7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+    .code-block pre {
+      margin: 0;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      line-height: 1.65;
+      color: #e6edf3;
+    }
+    .cm { color: #8b949e; }
+    .ck { color: #ff7b72; }
+    .cv { color: #79c0ff; }
+    .cs { color: #a5d6ff; }
+    .cn { color: #ffa657; }
+    .co { color: #7ee787; }
+  </style>
+</head>
+<body>
+
+  <nav class="analyse-nav">
+    <div class="nav-inner container">
+      <a href="../index.html#activites" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour au portfolio
+      </a>
+      <div class="theme-nav-btns">
+        <a href="theme-7.html">← Précédent</a>
+        <a href="#" class="disabled">Suivant →</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="analyse-hero">
+    <div class="container">
+      <span class="theme-badge">Thème 08 / 08</span>
+      <h1>Sécurité Applicative — Analyse et Exploitation d'une API REST</h1>
+      <div class="analyse-meta">
+        <span class="meta-pill">Sécurité applicative</span>
+        <span class="meta-pill hours">9h50</span>
+        <span class="meta-pill">Bash · HMAC-SHA256 · REST</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="analyse-body">
+
+      <article class="analyse-article">
+
+        <div class="analyse-section">
+          <h2>Contexte</h2>
+          <p>Ce projet est né d'une opportunité informelle mais particulièrement riche sur le plan technique. Un ami étudiant à l'EPHEC, Pierre Alexandre, avait développé un jeu web appelé <strong>TapTap</strong> — un jeu de rapidité avec un classement de scores en ligne, hébergé sur <em>taptap.l1-1.ephec-ti.be</em>. En discutant avec lui, j'ai voulu comprendre comment son API REST sécurisait la soumission des scores. Avec son accord et dans un cadre purement éducatif et amical, j'ai entrepris de l'analyser en profondeur.</p>
+          <p>Ce qui a rendu cette activité particulièrement intéressante, c'est qu'elle a rapidement évolué en un véritable <strong>jeu du chat et de la souris</strong> entre lui et moi. Dès que je trouvais un moyen de contourner une protection et d'injecter un score arbitraire dans le classement, Pierre Alexandre analysait ce que j'avais fait et renforçait sa sécurité. Je devais alors recommencer — analyser la nouvelle version de l'API, identifier la nouvelle protection, trouver comment la contourner. Ce cycle itératif s'est répété plusieurs fois et a rendu l'expérience d'autant plus stimulante.</p>
+          <p>J'ai consacré environ 8 heures au travail de scripting en solo, et environ 2 heures supplémentaires aux échanges et itérations avec Pierre Alexandre, pour un total de 9h50 déclarées.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Faits et apprentissages</h2>
+          <p>J'ai commencé par observer les requêtes HTTP échangées entre le navigateur et le serveur, en utilisant les DevTools Chrome. Cette phase d'observation m'a permis de cartographier l'ensemble du flux de l'API :</p>
+          <ul>
+            <li><strong>Démarrage de session (<code>/api/startGame</code>) :</strong> L'API génère un <code>gameSessionId</code> unique et une <code>ephemeralKey</code> — une clé cryptographique temporaire valable uniquement pour cette partie.</li>
+            <li><strong>Signature HMAC-SHA256 :</strong> La soumission du score (<code>/api/submit-score</code>) doit être accompagnée d'une signature calculée à partir du corps de la requête, de la clé éphémère, d'un timestamp en millisecondes et d'un hash de l'intégrité des fonctions JavaScript côté client (<code>fnHash</code>).</li>
+            <li><strong>Vérification d'intégrité des fonctions :</strong> Pierre Alexandre avait mis en place un mécanisme de hash de chaque fonction JavaScript du jeu, envoyé avec chaque score — rendant toute modification du code client détectable côté serveur.</li>
+          </ul>
+          <p>J'ai ensuite écrit un script Bash complet qui reproduit automatiquement l'ensemble de ce processus :</p>
+
+          <div class="code-block">
+            <div class="code-block-header">
+              <span>test.sh</span>
+              <span class="lang-badge">Bash</span>
+            </div>
+            <pre><span class="cm">#!/bin/bash
+# Usage : ./test.sh -t 30 -p HACKER -s 90</span>
+
+<span class="cv">waitTime</span>=10
+<span class="cv">gameMode</span>=<span class="cs">"Normal"</span>
+<span class="cv">pseudo</span>=<span class="cs">"HACKER"</span>
+<span class="cv">score</span>=35
+
+<span class="ck">while</span> getopts <span class="cs">"dt:g:p:s:"</span> opt; <span class="ck">do</span>
+  <span class="ck">case</span> $opt <span class="ck">in</span>
+    t) waitTime=$OPTARG ;;
+    g) gameMode=<span class="cs">"$OPTARG"</span> ;;
+    p) pseudo=<span class="cs">"$OPTARG"</span> ;;
+    s) score=<span class="cs">"$OPTARG"</span> ;;
+    d) debug=<span class="cs">"-v"</span> ;;
+  <span class="ck">esac</span>
+<span class="ck">done</span>
+
+<span class="cv">timeSelected</span>=<span class="cs">"${waitTime}S"</span>
+<span class="ck">let</span> <span class="cv">waitTime</span>=$waitTime+2
+
+<span class="cm"># 1. Démarrer une session de jeu et récupérer les clés</span>
+curl -s <span class="cs">'https://taptap.l1-1.ephec-ti.be:3000/api/startGame'</span> \
+  -H <span class="cs">'Content-Type: application/json'</span> \
+  --data-raw <span class="cs">"{\"modes\":[\"$gameMode\",\"$timeSelected\"]}"</span> \
+  -o start-game.json
+
+<span class="cv">gameSessionId</span>=$(jq -r <span class="cs">'.gameSessionId'</span> start-game.json)
+<span class="cv">ephemeralKey</span>=$(jq -r <span class="cs">'.ephemeralKey'</span> start-game.json)
+<span class="cm"># Extraire le randomNumber depuis les bits 11-23 de la clé éphémère</span>
+<span class="ck">let</span> <span class="cv">randomNumber</span>=<span class="cs">"0x$(echo $ephemeralKey | cut -c 11-23)"</span>
+
+<span class="co">echo</span> <span class="cs">"gameSessionId=$gameSessionId"</span>
+<span class="co">echo</span> <span class="cs">"ephemeralKey=$ephemeralKey"</span>
+
+sleep $waitTime  <span class="cm"># Simuler la durée de jeu</span>
+
+<span class="cm"># 2. Construire le corps de la requête</span>
+<span class="cv">timestamp</span>=$(printf <span class="cs">"%s%03d"</span> $(date <span class="cs">"+%s"</span>) $(shuf -i 0-999 -n 1))
+<span class="cv">functionsHash</span>=$(cat functionsHash.json | tr -d <span class="cs">'\n'</span>)
+<span class="cv">body</span>=<span class="cs">"{\"score\":$score,\"pseudo\":\"$pseudo\",\"gameMode\":\"$gameMode\",\"timeSelected\":\"$timeSelected\",\"timestamp\":$timestamp,\"fnHash\":$functionsHash,\"randomNumber\":$randomNumber}"</span>
+
+<span class="cm"># 3. Calculer la signature HMAC-SHA256 avec la clé éphémère</span>
+<span class="cv">signature</span>=$(echo $body | tr -d <span class="cs">'\n'</span> | openssl dgst -sha256 -hmac $ephemeralKey -binary | openssl base64 -e -A)
+
+<span class="co">echo</span> <span class="cs">"Signature=$signature"</span>
+
+<span class="cm"># 4. Soumettre le score avec la signature et le session ID</span>
+curl -s <span class="cs">'https://taptap.l1-1.ephec-ti.be:3000/api/submit-score'</span> \
+  -H <span class="cs">'Content-Type: application/json'</span> \
+  -H <span class="cs">"X-Session-Id: $gameSessionId"</span> \
+  -H <span class="cs">"X-Signature: $signature"</span> \
+  --data-raw <span class="cs">"$body"</span></pre>
+          </div>
+
+          <p>Le script accepte des paramètres en ligne de commande (<code>-s</code> pour le score, <code>-p</code> pour le pseudo, <code>-t</code> pour le temps) ce qui permettait de soumettre n'importe quel score en une seule commande : <code>./test.sh -t 30 -p HACKER -s 9999</code>.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Le jeu du chat et de la souris</h2>
+          <p>Ce qui a rendu cette activité vraiment enrichissante, c'est la dynamique qui s'est installée avec Pierre Alexandre. Dès que je réussissais à injecter un score dans son classement, il analysait la faille que j'avais utilisée et renforçait son API. Voici comment les itérations se sont enchaînées :</p>
+          <ul>
+            <li><strong>Première version :</strong> Pas de vérification de signature — n'importe quelle requête POST était acceptée. J'ai soumis des scores directement avec curl.</li>
+            <li><strong>Après son patch :</strong> Il a ajouté la clé éphémère et la signature HMAC. J'ai alors analysé comment la clé était générée, reproduit le calcul en Bash avec OpenSSL, et contourné la protection.</li>
+            <li><strong>Deuxième patch :</strong> Il a ajouté le hash d'intégrité des fonctions JavaScript (<code>fnHash</code>), pour détecter si le code client avait été modifié. J'ai capturé un vrai <code>fnHash</code> valide lors d'une vraie session et l'ai réutilisé dans mon script.</li>
+            <li><strong>Troisième patch :</strong> Il a ajouté un <code>randomNumber</code> extrait d'une portion spécifique de la clé éphémère, pour lier le score à la session. J'ai analysé comment ce nombre était calculé côté client, reproduit l'extraction de bits avec Bash (<code>cut -c 11-23</code>), et intégré le calcul dans mon script.</li>
+          </ul>
+          <p>À chaque itération, j'apprenais quelque chose de nouveau — sur la cryptographie, sur les mécanismes d'authentification, et sur la manière dont un développeur pense la sécurité de son application. Et Pierre Alexandre, de son côté, renforçait son projet grâce à mes découvertes.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Mise en perspective</h2>
+          <p>Cette expérience illustre parfaitement deux de mes forces. D'abord, ma <strong>persévérance</strong> : à chaque fois que Pierre Alexandre corrigeait une faille, j'aurais pu abandonner et considérer que la protection était suffisante. Je ne l'ai pas fait. J'ai recommencé, analysé la nouvelle version, et trouvé le prochain vecteur. Ensuite, mon <strong>autonomie</strong> : j'ai appris la cryptographie HMAC, le scripting Bash avancé et les mécanismes d'authentification API entièrement par moi-même, sans cours ni tutoriel dédié.</p>
+          <p>Elle a également mis en lumière une faiblesse : au départ, je n'avais aucune base en cryptographie. J'ai dû admettre cette lacune et apprendre rapidement — ce qui est en soi une compétence que j'essaie de développer.</p>
+        </div>
+
+        <div class="analyse-section">
+          <h2>Lien avec mon projet professionnel</h2>
+          <p>Dans une entreprise comme AXA, qui gère des données financières et personnelles sensibles pour des millions de clients, la sécurité applicative n'est pas optionnelle. Les développeurs ont une responsabilité directe dans la robustesse des APIs qu'ils créent. Cette expérience m'a donné une compréhension concrète et pratique de la sécurité côté serveur — pas depuis un cours théorique, mais en la testant réellement, itération après itération.</p>
+          <p>Comprendre comment une API peut être compromise est la meilleure façon de savoir comment la sécuriser. C'est exactement ce qu'ont compris les grandes entreprises en pratiquant le <em>red teaming</em> et les tests de pénétration. Cette expérience me donne un angle de réflexion sur la sécurité que peu de développeurs juniors possèdent.</p>
+        </div>
+
+      </article>
+
+      <aside class="analyse-sidebar">
+        <div class="info-card">
+          <h4>Informations</h4>
+          <div class="info-row"><span>Thème</span><span>08 / 08</span></div>
+          <div class="info-row"><span>Heures</span><span>9h50</span></div>
+          <div class="info-row"><span>Solo</span><span>~8h scripting</span></div>
+          <div class="info-row"><span>Collaboratif</span><span>~2h avec Pierre Alexandre</span></div>
+          <div class="info-row"><span>Cadre</span><span>Éducatif / amical</span></div>
+          <div class="skill-tag-row">
+            <span class="tag">Bash</span>
+            <span class="tag">HMAC-SHA256</span>
+            <span class="tag">REST API</span>
+            <span class="tag">OpenSSL</span>
+            <span class="tag">Linux</span>
+            <span class="tag">curl</span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-card-header">
+            <h4>Preuve — Script Bash</h4>
+            <span class="proof-verified">✓ Code source</span>
+          </div>
+          <div class="proof-card-body">
+            <p>Script <code>test.sh</code> complet affiché dans l'analyse ci-contre — calcul HMAC-SHA256 via OpenSSL, gestion de session éphémère, soumission de score arbitraire avec signature valide.</p>
+            <p style="margin-top:8px; font-size:.8rem; color:var(--accent);">Cible : taptap.l1-1.ephec-ti.be (projet de Pierre Alexandre, EPHEC)</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h4>Forces / Faiblesses abordées</h4>
+          <div class="info-row"><span>Force</span><span>Persévérance</span></div>
+          <div class="info-row"><span>Force</span><span>Autonomie</span></div>
+          <div class="info-row"><span>Force</span><span>Curiosité technique</span></div>
+          <div class="info-row"><span>Faiblesse</span><span>Lacunes en crypto</span></div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <section class="analyse-theme-nav">
+    <div class="container">
+      <div class="theme-nav-grid">
+        <a href="theme-7.html" class="theme-nav-card">
+          <span class="direction">← Thème précédent</span>
+          <span class="title">Open Lab réseau</span>
+        </a>
+        <a href="../index.html" class="theme-nav-card next">
+          <span class="direction">Retour →</span>
+          <span class="title">Page d'accueil du portfolio</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

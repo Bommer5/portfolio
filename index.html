@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathan Brico — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">NB</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#projet">Projet pro</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#activites">Activités</a></li>
+        <li><a href="#echecs">Démo</a></li>
+        <li><a href="#cv" class="nav-cta">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Portfolio — Stage EPHEC 2025–2026</span>
+      <h1>Nathan<br><span class="hero-accent">Brico</span></h1>
+      <p class="hero-subtitle">Étudiant en Technologies de l'Informatique<br>EPHEC · Louvain-la-Neuve</p>
+      <div class="hero-buttons">
+        <a href="#activites" class="btn btn-primary">Voir mes activités</a>
+        <a href="#cv" class="btn btn-outline">Mon CV</a>
+      </div>
+    </div>
+    <a href="#about" class="scroll-down" aria-label="Défiler">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7" />
+      </svg>
+    </a>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-tag">À propos</span>
+          <h2>Qui suis-je ?</h2>
+          <p>Étudiant en Technologies de l'Informatique à l'EPHEC (Louvain-la-Neuve), passionné par le développement
+            full-stack et les nouvelles technologies. Durant mes études, j'ai réalisé une application de chat en temps
+            réel (TypeScript, Node.js, GraphQL). Curieux et polyvalent, je m'intéresse fortement à l'intelligence
+            artificielle et à son potentiel dans des projets concrets. Motivé, je cherche à mettre mes compétences au
+            service d'un environnement professionnel ambitieux.</p>
+
+          <div class="strengths-grid">
+            <div class="strength-card positive">
+              <h4>Points forts</h4>
+              <ul>
+                <li>Persévérance face aux obstacles</li>
+                <li>Polyvalence technique</li>
+                <li>Autonomie et apprentissage rapide</li>
+                <li>Mental fort (ancrage sportif)</li>
+              </ul>
+            </div>
+            <div class="strength-card negative">
+              <h4>Axes d'amélioration</h4>
+              <ul>
+                <li>Perfectionnisme excessif</li>
+                <li>Gestion du stress en situation de pression</li>
+                <li>Organisation à perfectionner</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Thèmes d'activités</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">~60h</span>
+            <span class="stat-label">Heures déclarées</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">3e</span>
+            <span class="stat-label">Année de bachelier</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">6+</span>
+            <span class="stat-label">Technologies maîtrisées</span>
+          </div>
+          <div class="hobbies-card">
+            <h4>Loisirs</h4>
+            <div class="hobby-item">
+              <strong>Tennis de table</strong>
+              <p>12 ans de pratique · Nationale 3 · Tournois BUSF-FSUB</p>
+            </div>
+            <div class="hobby-item">
+              <strong>Projets personnels</strong>
+              <p>Applications, scripts, exploration de nouvelles technos</p>
+            </div>
+            <div class="hobby-item">
+              <strong>Intelligence artificielle</strong>
+              <p>APIs modernes, intégration IA dans des projets concrets</p>
+            </div>
+            <div class="hobby-item">
+              <strong>Jeux de stratégie</strong>
+              <p>Réflexion, anticipation, logique</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJET PROFESSIONNEL -->
+  <section id="projet">
+    <div class="container">
+      <span class="section-tag">Avenir</span>
+      <h2>Mon Projet Professionnel</h2>
+      <div class="projet-grid">
+        <div class="projet-main">
+          <div class="projet-card">
+            <div class="projet-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <h3>Développeur Full-Stack</h3>
+            <p>Mon objectif est de devenir développeur full-stack au sein d'une grande structure, capable d'intervenir
+              aussi bien sur les couches front-end que back-end. Je souhaite évoluer dans un environnement exigeant,
+              stimulant et orienté vers des enjeux technologiques à forte valeur ajoutée.</p>
+            <div class="target-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+              Cible : AXA · Bruxelles
+            </div>
+          </div>
+        </div>
+        <div class="projet-steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div>
+              <h4>Court terme</h4>
+              <p>Obtenir mon bachelier en Technologies de l'Informatique (EPHEC, 2026) et acquérir une première
+                expérience professionnelle solide en stage.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div>
+              <h4>Moyen terme</h4>
+              <p>Intégrer le département IT d'une entreprise de premier plan comme AXA, contribuer à des projets
+                full-stack et approfondir mes compétences cloud (Azure, M365).</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <div>
+              <h4>Long terme</h4>
+              <p>Évoluer vers des responsabilités techniques élargies, en intégrant l'intelligence artificielle dans des
+                solutions métier concrètes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="competences">
+    <div class="container">
+      <span class="section-tag">Skills</span>
+      <h2>Compétences Techniques</h2>
+      <div class="skills-grid">
+        <div class="skills-category">
+          <h4>Frontend</h4>
+          <div class="skills-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">TypeScript</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h4>Backend</h4>
+          <div class="skills-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">GraphQL</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h4>Outils & DevOps</h4>
+          <div class="skills-tags">
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Bash</span>
+            <span class="tag">nginx</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h4>Réseaux & Cloud</h4>
+          <div class="skills-tags">
+            <span class="tag">Réseaux TCP/IP</span>
+            <span class="tag">Azure (notions)</span>
+            <span class="tag">M365</span>
+            <span class="tag">HMAC / Sécurité</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITÉS -->
+  <section id="activites">
+    <div class="container">
+      <span class="section-tag">Bilan d'activités</span>
+      <h2>Mes Activités d'Acquisition</h2>
+      <p class="section-desc">8 thèmes couvrant projets personnels, formations, compétitions et conférences — réalisés
+        en dehors du cadre scolaire obligatoire.</p>
+
+      <div class="activities-grid">
+
+        <!-- Thème 1 -->
+        <div class="activity-card" data-theme="1">
+          <div class="activity-header">
+            <div class="theme-num">01</div>
+            <div class="activity-meta">
+              <span class="activity-type project">Projet personnel</span>
+              <span class="activity-hours">9h20</span>
+            </div>
+          </div>
+          <h3>Jeu d'Échecs en JavaScript</h3>
+          <p class="activity-desc">Développement d'un jeu d'échecs complet avec plateau interactif, gestion des règles officielles (en-passant, promotion, roque, détection d'échec et mat) et logique de déplacement en JavaScript.</p>
+          <div class="activity-skills">
+            <span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>React</span>
+          </div>
+          <div class="activity-footer">
+            <span class="proof-badge">Preuve : Code source + démo intégrée</span>
+            <a href="analyses/theme-1.html" class="expand-btn">Lire l'analyse →</a>
+          </div>
+        </div>
+
+        <!-- Thème 2 -->
+        <div class="activity-card" data-theme="2">
+          <div class="activity-header">
+            <div class="theme-num">02</div>
+            <div class="activity-meta">
+              <span class="activity-type sport">Développement personnel</span>
+              <span class="activity-hours">9h40</span>
+            </div>
+          </div>
+          <h3>Tennis de Table — Compétition Interuniversitaire</h3>
+          <p class="activity-desc">Pratique compétitive depuis 12 ans, classé Nationale 3. Participation au tournoi BUSF-FSUB (séries A-B-C, Cuesmes, 2025-2026), représentant l'EPHEC en compétition interuniversitaire.</p>
+          <div class="activity-skills">
+            <span>Rigueur</span><span>Gestion du stress</span><span>Persévérance</span>
+          </div>
+          <div class="activity-footer">
+            <span class="proof-badge">Preuve : Médaille BUSF-FSUB officielle</span>
+            <a href="analyses/theme-2.html" class="expand-btn">Lire l'analyse →</a>
+          </div>
+        </div>
+
+        <!-- Thème 3 -->
+        <div class="activity-card" data-theme="3">
+          <div class="activity-header">
+            <div class="theme-num">03</div>
+            <div class="activity-meta">
+              <span class="activity-type formation">Formation en ligne</span>
+              <span class="activity-hours">8h55</span>
+            </div>
+          </div>
+          <h3>Apprentissage du Framework React</h3>
+          <p class="activity-desc">Suivi de la formation complète "React JavaScript Framework for Beginners – Project-Based Course" (freeCodeCamp, 8h26) — composants, hooks, state management, et construction de projets pratiques.</p>
+          <div class="activity-skills">
+            <span>React</span><span>JSX</span><span>Hooks</span><span>State Management</span>
+          </div>
+          <div class="activity-footer">
+            <span class="proof-badge">Preuve : Historique YouTube — freeCodeCamp</span>
+            <a href="analyses/theme-3.html" class="expand-btn">Lire l'analyse →</a>
+          </div>
+        </div>
+
+        <!-- Thème 4 -->
+        <div class="activity-card" data-theme="4">
+          <div class="activity-header">
+            <div class="theme-num">04</div>
+            <div class="activity-meta">
+              <span class="activity-type project">Projet personnel</span>
+              <span class="activity-hours">7h</span>
+            </div>
+          </div>
+          <h3>La Roue du Chaos — Jeu multijoueur piloté par IA</h3>
+          <p class="activity-desc">Développement d'un jeu "Vérité ou Défi" multijoueur où les défis sont générés dynamiquement par l'API Google Gemini. Back-end Node.js, front-end HTML/JavaScript.</p>
+          <div class="activity-skills">
+            <span>Node.js</span><span>API Gemini</span><span>JavaScript</span><span>HTML5</span>
+          </div>
+          <div class="activity-footer">
+            <span class="proof-badge">Preuve : Code source disponible</span>
+            <a href="analyses/theme-4.html" class="expand-btn">Lire l'analyse →</a>
+          </div>
+        </div>
+
+        <!-- Thème 5 -->
+        <div class="activity-card" data-theme="5">
+          <div class="activity-header">
+            <div class="theme-num">05</div>
+            <div class="activity-meta">
+              <span class="activity-type formation">Formations certifiées</span>
+              <span class="activity-hours">9h45</span>
+            </div>
+          </div>
+          <h3>Formations Technofutur TIC</h3>
+          <p class="activity-desc">Trois formations officielles certifiées par Technofutur TIC asbl (Gosselies) : Initiation JavaScript (3h45), Initiation CSS (2h50), Création de site web (3h10).</p>
+          <div class="activity-skills">
+            <span>JavaScript</span><span>CSS</span><span>HTML</span><span>Web</span>
+          </div>
+          <div class="activity-footer">
+            <span class="proof-badge">Preuve : 3 attestations Technofutur TIC</span>
+            <a href="analyses/theme-5.html" class="expand-btn">Lire l'analyse →</a>
+          </div>
+        </div>
+
+        <!-- Thème 6 -->
+        <div class="activity-card" data-theme="6">
+          <div class="activity-header">
+            <div class="theme-num">06</div>
+            <div class="activity-meta">
+              <span class="activity-type conference">Conférence</span>
+              <span class="activity-hours">2h</span>
+            </div>
+          </div>
+          <h3>Conférence Cloud — M365 &amp; Azure Infrastructure</h3>
+          <p class="activity-desc">Participation à la conférence "Cloud avec M365 et Azure Infrastructure" animée par Kevin Keurvels (Axentys), organisée par l'EPHEC le 3 novembre 2025.</p>
+          <div class="activity-skills">
+            <span>Azure</span><span>M365</span><span>Cloud</span><span>Infrastructure</span>
+          </div>
+          <div class="activity-footer">
+            <span class="proof-badge">Preuve : Attestation EPHEC officielle</span>
+            <a href="analyses/theme-6.html" class="expand-btn">Lire l'analyse →</a>
+          </div>
+        </div>
+
+        <!-- Thème 7 -->
+        <div class="activity-card" data-theme="7">
+          <div class="activity-header">
+            <div class="theme-num">07</div>
+            <div class="activity-meta">
+              <span class="activity-type lab">Atelier pratique</span>
+              <span class="activity-hours">4h</span>
+            </div>
+          </div>
+          <h3>Open Lab — Réseau sur Matériel Physique</h3>
+          <p class="activity-desc">Participation à l'Open Lab EPHEC "Réalisation d'un labo réseau sur du matériel physique" (avril 2024) — configuration de routeurs, switchs et câblage réseau sur équipements réels.</p>
+          <div class="activity-skills">
+            <span>Réseaux</span><span>Routeurs</span><span>Switchs</span><span>TCP/IP</span>
+          </div>
+          <div class="activity-footer">
+            <span class="proof-badge">Preuve : Certificat signé — EPHEC</span>
+            <a href="analyses/theme-7.html" class="expand-btn">Lire l'analyse →</a>
+          </div>
+        </div>
+
+        <!-- Thème 8 -->
+        <div class="activity-card" data-theme="8">
+          <div class="activity-header">
+            <div class="theme-num">08</div>
+            <div class="activity-meta">
+              <span class="activity-type security">Sécurité applicative</span>
+              <span class="activity-hours">9h35</span>
+            </div>
+          </div>
+          <h3>Analyse de Sécurité — API REST</h3>
+          <p class="activity-desc">Étude du fonctionnement d'une API REST sécurisée : analyse des mécanismes d'authentification, compréhension de la génération de signatures HMAC-SHA256 et automatisation via script Bash.</p>
+          <div class="activity-skills">
+            <span>Bash</span><span>HMAC-SHA256</span><span>REST API</span><span>Linux</span>
+          </div>
+          <div class="activity-footer">
+            <span class="proof-badge">Preuve : Script bash documenté</span>
+            <a href="analyses/theme-8.html" class="expand-btn">Lire l'analyse →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DÉMO JEU D'ÉCHECS -->
+  <section id="echecs">
+    <div class="container">
+      <span class="section-tag">Démonstration</span>
+      <h2>Jeu d'Échecs — Démo Live</h2>
+      <p class="section-desc">Le jeu développé en JavaScript pur, intégré directement dans ce portfolio. Cliquez sur
+        "Start" pour lancer une partie.</p>
+      <div class="chess-wrapper">
+        <iframe src="chess/chess.html" title="Jeu d'échecs JavaScript" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <div class="container">
+      <span class="section-tag">Curriculum Vitae</span>
+      <h2>Mon CV</h2>
+      <div class="cv-grid">
+        <div class="cv-info">
+          <div class="cv-block">
+            <h4>Formation</h4>
+            <div class="cv-item">
+              <span class="cv-date">2023 – 2026</span>
+              <div>
+                <strong>Bachelor en Technologies de l'Informatique</strong>
+                <span>EPHEC · Louvain-la-Neuve</span>
+              </div>
+            </div>
+          </div>
+          <div class="cv-block">
+            <h4>Expérience</h4>
+            <div class="cv-item">
+              <span class="cv-date">En cours</span>
+              <div>
+                <strong>Stage — Technologies de l'Informatique</strong>
+                <span>EPHEC · 2025–2026</span>
+              </div>
+            </div>
+            <div class="cv-item">
+              <span class="cv-date">2025 –</span>
+              <div>
+                <strong>Moniteur de tennis de table</strong>
+                <span>Activité indépendante · Piranha TT</span>
+              </div>
+            </div>
+          </div>
+          <div class="cv-block">
+            <h4>Langues</h4>
+            <div class="lang-row">
+              <span>Français</span>
+              <div class="lang-bar">
+                <div style="width:100%"></div>
+              </div><span>Natif</span>
+            </div>
+            <div class="lang-row">
+              <span>Anglais</span>
+              <div class="lang-bar">
+                <div style="width:55%"></div>
+              </div><span>B1</span>
+            </div>
+          </div>
+          <div class="cv-block">
+            <h4>Contact</h4>
+            <p>nathan23.brico@gmail.com</p>
+            <p>Permis B</p>
+            <p>Belgique</p>
+          </div>
+        </div>
+        <div class="cv-download">
+          <div class="cv-download-card">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="12" y1="18" x2="12" y2="12" />
+              <polyline points="9 15 12 18 15 15" />
+            </svg>
+            <h3>Télécharger mon CV</h3>
+            <p>Format PDF · Version complète Europass</p>
+            <a href="assets/cv.pdf" download class="btn btn-primary">Télécharger le CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="nav-logo">NB</span>
+          <p>Nathan Brico · Portfolio Stage EPHEC 2025–2026</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/Bommer5" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://piranha-tt.be" target="_blank" rel="noopener">Piranha TT</a>
+          <a href="mailto:nathan23.brico@gmail.com">Contact</a>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nathan Brico. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
